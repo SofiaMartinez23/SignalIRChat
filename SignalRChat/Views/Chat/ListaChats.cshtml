@@ -1,0 +1,84 @@
+﻿@model Dictionary<int, string>
+
+<h1 class="m-2">Grupos de Chats</h1>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <ul class="list-group list-group-flush">
+            @foreach (var chat in Model)
+            {
+                <li class="list-group-item chat-item">
+                    <a asp-controller="Chat" asp-action="Chat" asp-route-idChat="@chat.Key" class="chat-link">
+                        <div class="d-flex align-items-center">
+                            <!-- Icono de chat -->
+                            <i class="fa fa-comments chat-icon"></i>
+
+                            <!-- Nombre del chat -->
+                            <span class="ml-3 chat-name">@chat.Value</span>
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f4f7f6;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Contenedor de la lista de chats */
+    .list-group {
+        padding: 0;
+    }
+
+    /* Estilo de cada item (chat) */
+    .chat-item {
+        border-radius: 10px;
+        background-color: #ffffff;
+        margin-bottom: 15px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+        .chat-item:hover {
+            background-color: #e3f2fd;
+            cursor: pointer;
+        }
+
+    /* Estilo del enlace */
+    .chat-link {
+        text-decoration: none;
+        color: #333;
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    /* Estilo del icono */
+    .chat-icon {
+        font-size: 24px;
+        color: #1d8ecd;
+    }
+
+    /* Estilo del nombre del chat */
+    .chat-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-left: 10px;
+    }
+
+    /* Hover de cada chat */
+    .chat-item:hover .chat-name {
+        color: #1d8ecd;
+    }
+
+    /* Estilo de la columna central */
+    .col-12 {
+        max-width: 100%;
+    }
+</style>
