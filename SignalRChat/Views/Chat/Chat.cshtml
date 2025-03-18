@@ -50,6 +50,7 @@
 
         $(document).ready(function () {
             var conexion = new signalR.HubConnectionBuilder().withUrl("/Chats").build();
+            //Iniciamos la conexion
             conexion.start().then(() => {
                 conexion.invoke("AddToGroup", "@Model");
             }).then(() => console.log(conexion));
